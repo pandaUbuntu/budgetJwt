@@ -1,42 +1,23 @@
-import { getFormInputValueByName } from '../../utils/formHelper';
-import { createCatagory } from '../../api/slices/category';
-import { useAppDispatch, useAppSelector } from '../../api/hooks';
+
+import CategorySide from '../../components/CategorySide';
+import TransationSide from '../../components/TransactionSide';
+import PageLayout from '../../layout/PageLayout';
 
 function CategoryPage() {
-    const dispatch = useAppDispatch();
-    const { categories, isLoading, error } = useAppSelector((state) => state.category);
-
-    const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-        event.preventDefault();
-  
-        let name = getFormInputValueByName(event.currentTarget, "name");
-
-        if (!name) {
-            console.log("Заповніть всі поля");
-            return;
-        }
-
-  
-        dispatch(createCatagory({ name }))
-            .unwrap()
-            .then((data) => {
-                console.log("Успішно створено", data);
-            })
-            .catch((error) => {
-                console.error("Помилка", error);
-            });
-    }
-
   return (
     <>
-      <p>{isLoading && "Завантаження" }</p>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="name">Введіть назву категорії: </label>
-          <input name="name"/>
+      <PageLayout>
+        <div className="container">
+          <div>
+            <h2>Category Side</h2>
+            <CategorySide />
+          </div>
+          <div>
+            <h2>Transaction Side</h2>
+            <TransationSide />
+          </div>
         </div>
-        <button type="submit">Створити</button>
-      </form>
+      </PageLayout>
     </>
   )
 }

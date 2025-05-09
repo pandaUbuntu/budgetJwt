@@ -1,13 +1,12 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 
 function App() {
 
   return (
     <>
-      <a href="/registration">Реєстрація</a>
+      <div><a href="/registration">Реєстрація</a></div>
+      <div><a href="/login">ЛОгін</a></div>
+      <div><a href="/category">Категорія</a></div>
     </>
   )
 }
