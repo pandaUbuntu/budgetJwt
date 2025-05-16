@@ -1,0 +1,25 @@
+ul.transaction-list{
+  list-style: none;
+  
+  li{
+    margin: 20px 10px;
+    border: 1px solid #ccc;
+
+    span:first-child{
+        font-weight: bold;
+        margin-right: 10px;
+    }
+
+    button{
+        margin: 5px;
+    }
+  }
+
+  .green{
+    color: rgb(146, 241, 146);
+  }
+
+  .red{
+      color: rgb(238, 154, 154);
+  }
+}

@@ -81,6 +81,7 @@ html, body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  width: 1280px;
 }
 
 .content {
@@ -97,10 +98,9 @@ html, body {
 
 .container{
   display: flex;
-  justify-content: center;
-  align-items: center;
+}
 
-  div{
-    
-  }
+
+ul li{
+  list-style: none;
 }

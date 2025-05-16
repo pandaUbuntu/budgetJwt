@@ -1,0 +1,17 @@
+.transaction-form{
+    margin-top: 20px;
+
+    span{
+        font-size: 14px;
+        color: #ccc;
+        margin: 20px;
+    }
+
+    label{
+         margin: 0 5px;  
+    }
+
+    button{
+        margin-top: 20px;
+    }
+}

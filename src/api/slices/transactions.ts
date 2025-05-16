@@ -1,6 +1,6 @@
 import axios from '../axios'; 
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { Transaction } from '../../types/type';
+import { Transaction, FilterType } from '../../types/type';
 
 type TransactionState = {
     transactions: Transaction[];
@@ -13,6 +13,8 @@ const initialState: TransactionState = {
     isLoading: false,
     error: null,
 };
+
+
 
 const SLICE_URL = 'transactions';
 
@@ -31,9 +33,9 @@ export const createTransaction = createAsyncThunk(
 
 export const getTransactions = createAsyncThunk(
     'transaction/getAll',
-    async (_, { rejectWithValue }) => {
+    async (filter:FilterType, { rejectWithValue }) => {
         try {
-            const response:any = await axios.get(`/${SLICE_URL}`);
+            const response:any = await axios.get(`/${SLICE_URL}`, {params: { ...filter }});
             return response.data;
         } 
         catch (error:any) {
@@ -74,7 +76,7 @@ const transactionSlice = createSlice({
                 state.isLoading = false;
                 state.error = action.payload as string;
             })
-            /*.addCase(getTransactions.pending, (state) => {
+            .addCase(getTransactions.pending, (state) => {
                 state.isLoading = true;
                 state.error = null;
             })
@@ -85,7 +87,7 @@ const transactionSlice = createSlice({
             .addCase(getTransactions.rejected, (state, action) => {
                 state.isLoading = false;
                 state.error = action.payload as string;
-            })*/
+            })
             .addCase(deleteTransaction.pending, (state) => {
                 state.isLoading = true;
                 state.error = null;

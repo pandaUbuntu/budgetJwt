@@ -30,3 +30,9 @@ export type TransactionType = {
     name: 'income' | 'expense';
 }
   
+export type FilterType = {
+    type?: string;
+    categoryId?: number;
+    startDate?: string;
+    endDate?: string;
+}
